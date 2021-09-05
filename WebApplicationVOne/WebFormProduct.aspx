@@ -68,7 +68,7 @@
                     </ItemTemplate>                  
                     <EditItemTemplate>
                         <asp:DropDownList ID ="ddlCategory"  runat="server"
-                            DataTextField="cat_id" DataValueField="cat_id">
+                            DataTextField="cat_desc" DataValueField="cat_desc">
                         </asp:DropDownList>
                     </EditItemTemplate>
                     <FooterTemplate >
