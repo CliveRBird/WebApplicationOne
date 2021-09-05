@@ -116,6 +116,17 @@ namespace WebApplicationVOne
 
         public void grid1_OnRowCommand(object sender, GridViewCommandEventArgs e)
         {
+            if (e.CommandName == "Select")
+            {
+
+                TextBox1.Text = "Clive";
+                /*
+                int i = Convert.ToInt32(e.CommandArgument);
+                GridViewRow gvRow = (GridViewRow)grid1.Rows[i];
+                TextBox1.Text = gvRow.Cells[2].Text;
+                */
+            }
+
             if (e.CommandName == "Add_Rec")
             {
                 TextBox txtNameInput = (TextBox)grid1.FooterRow.FindControl("txtNameInput");
