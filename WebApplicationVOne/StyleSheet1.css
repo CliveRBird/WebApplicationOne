@@ -1,0 +1,25 @@
+﻿
+.row-eq-height {
+    display: flex;
+}
+
+h2.c1 {
+    font-family: Trebuchet MS,Verdana;
+    font-size: 20px;
+    color: Maroon;
+}
+
+h2.c2 {
+    font-family: Trebuchet MS,Verdana;
+    font-size: 16px;
+    color: Blue;
+}
+
+.customDiv {
+    font: Medium;
+    font-family: Arial;
+}
+
+content {
+    width: 500px;
+}
