@@ -221,3 +221,37 @@ getdate()
 go
 
 select * from tblApplicant
+
+drop table if exists Category;
+go
+
+create table Category
+(
+Cat_Id			int identity(1,1) primary key,
+Cat_Desc		varchar(500)
+);
+
+insert into Category values ('Confectionary');
+insert into Category values ('Alcohol');
+
+
+drop table if exists products;
+go
+
+create table products
+(
+ProductID		int identity(1,1) primary key,
+[Name]			varchar(500),
+ProductNumber	varchar(500),
+Color			varchar(500),
+--CategoryFK		int not null, 
+Category		varchar(500),
+--Cost			decimal(6,2)
+cost			varchar(50)
+);
+
+insert into products ([Name], ProductNumber, Color, Category, cost) values ('John Walker Black Label','JW Black Label','Black','Alcohol','£16.00');
+
+ALTER TABLE products  
+ADD CONSTRAINT FK_CategoryFK FOREIGN KEY([CategoryFK])
+        REFERENCES Category (Cat_Id);

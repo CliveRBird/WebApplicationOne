@@ -131,9 +131,11 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="index.html" />
+    <Content Include="SQLScripts\TransactSQL.sql" />
     <Content Include="StyleSheet1.css" />
     <Content Include="WebFormAirports.aspx" />
     <Content Include="WebFormDocEditor.aspx" />
+    <Content Include="WebFormProduct.aspx" />
     <Content Include="WebFormVisitor.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -197,6 +199,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -233,6 +236,13 @@
     <Compile Include="WebFormDocEditor.aspx.designer.cs">
       <DependentUpon>WebFormDocEditor.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebFormProduct.aspx.cs">
+      <DependentUpon>WebFormProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebFormProduct.aspx.designer.cs">
+      <DependentUpon>WebFormProduct.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebFormVisitor.aspx.cs">
       <DependentUpon>WebFormVisitor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -243,7 +253,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="SQLScripts\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
