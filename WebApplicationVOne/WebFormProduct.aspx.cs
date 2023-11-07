@@ -130,11 +130,9 @@ namespace WebApplicationVOne
             if (e.CommandName == "Add_Rec")
             {
                 TextBox txtNameInput = (TextBox)grid1.FooterRow.FindControl("txtNameInput");
-                TextBox txtProductNumberInput = (TextBox)grid1.FooterRow.FindControl(
-                    "txtProductNumberInput");
+                TextBox txtProductNumberInput = (TextBox)grid1.FooterRow.FindControl("txtProductNumberInput");
                 TextBox txtColorInput = (TextBox)grid1.FooterRow.FindControl("txtColorInput");
-                DropDownList ddlCategoryInput = (DropDownList)grid1.FooterRow.FindControl(
-                    "ddlCategoryInput");
+                DropDownList ddlCategoryInput = (DropDownList)grid1.FooterRow.FindControl("ddlCategoryInput");
                 TextBox txtCostInput = (TextBox)grid1.FooterRow.FindControl("txtCostInput");
                 int rowInsert
                     = Product.insertRow(

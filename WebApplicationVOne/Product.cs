@@ -18,11 +18,14 @@ public class Product
 
     public static DataTable FetchProducts()
     {
+        string Name_p;
+        Name_p = "Krispy Cream";
         string StrCon = ConfigurationManager.ConnectionStrings["cs"].ConnectionString;
         SqlConnection Conn = new SqlConnection(StrCon);
-        string SqlSelect =
-           "select ProductId ,Name ,ProductNumber ,Color ,Category , Cost   from products  ";
+        //string SqlSelect = "select ProductId ,Name ,ProductNumber ,Color ,Category , Cost   from products";
+        string SqlSelect = "usp_SelectProduct @Name";
         SqlCommand cmd = new SqlCommand(SqlSelect, Conn);
+        cmd.Parameters.Add(new SqlParameter("@Name", Name_p));
         SqlDataAdapter da = new SqlDataAdapter(cmd);
         DataSet ds = new DataSet();
         da.Fill(ds, "table1");

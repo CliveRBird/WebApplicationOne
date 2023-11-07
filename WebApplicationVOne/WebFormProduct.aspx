@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+    <p></p>
     <asp:GridView ID="grid1" runat="server" AutoGenerateColumns="false"
         DataKeyNames="ProductId,Category"
         OnRowDataBound="grid1_OnRowDataBound"
@@ -14,7 +15,7 @@
         AllowSorting="true"
         OnSorting="grid1_OnSorting"
         AllowPaging="true"
-        PageSize="2"
+        PageSize="5"
         OnPageIndexChanging="grid1_OnPageIndexChanging"
         EmptyDataText="No records Selected." >
         <Columns>

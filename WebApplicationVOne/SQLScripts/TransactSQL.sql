@@ -255,3 +255,14 @@ insert into products ([Name], ProductNumber, Color, Category, cost) values ('Joh
 ALTER TABLE products  
 ADD CONSTRAINT FK_CategoryFK FOREIGN KEY([CategoryFK])
         REFERENCES Category (Cat_Id);
+
+
+drop procedure if exists usp_SelectProduct;
+go
+
+create procedure usp_SelectProduct(@Name varchar(500))
+as
+begin
+    select ProductId ,[Name] ,ProductNumber ,Color ,Category , Cost  from products;
+end;
+go

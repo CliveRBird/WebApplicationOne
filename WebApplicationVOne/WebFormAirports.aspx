@@ -84,7 +84,7 @@
                         </EmptyDataTemplate>
 
                     </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSourceContinent" runat="server" ConnectionString="<%$ ConnectionStrings:OakwoodConnectionString %>"
+                    <asp:SqlDataSource ID="SqlDataSourceContinent" runat="server" ConnectionString="<%$ ConnectionStrings:AirlineConnectionString %>"
                         DeleteCommand="DELETE FROM [Continent] WHERE [ContinentID] = @ContinentID"
                         InsertCommand="INSERT INTO [Continent] ([Name], [Active]) VALUES (@Name, @Active)"
                         SelectCommand="SELECT * FROM [Continent]"
@@ -132,7 +132,7 @@
                                 <EditItemTemplate>
                                     <asp:DropDownList ID="DropDownListContinents" runat="server" DataSourceID="SqlDataSourceContinents" DataTextField="Name" DataValueField="ContinentID" SelectedValue='<%# Bind("ContinentID") %>'>
                                     </asp:DropDownList>
-                                    <asp:SqlDataSource ID="SqlDataSourceContinents" runat="server" ConnectionString="<%$ ConnectionStrings:OakwoodConnectionString %>" SelectCommand="SELECT DISTINCT [ContinentID], [Name] FROM [Continent]"></asp:SqlDataSource>
+                                    <asp:SqlDataSource ID="SqlDataSourceContinents" runat="server" ConnectionString="<%$ ConnectionStrings:AirlineConnectionString %>" SelectCommand="SELECT DISTINCT [ContinentID], [Name] FROM [Continent]"></asp:SqlDataSource>
                                 </EditItemTemplate>
                                 <ItemTemplate>
                                     <asp:Label ID="Label3" runat="server" Text='<%# Bind("ContinentName") %>'></asp:Label>
@@ -141,7 +141,7 @@
                             <asp:CheckBoxField DataField="Active" HeaderText="Active" SortExpression="Active" />
                         </Columns>
                     </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSourceCountry" runat="server" ConnectionString="<%$ ConnectionStrings:OakwoodConnectionString %>"
+                    <asp:SqlDataSource ID="SqlDataSourceCountry" runat="server" ConnectionString="<%$ ConnectionStrings:AirlineConnectionString %>"
                         DeleteCommand="DELETE FROM [Country] WHERE [CountryID] = @CountryID"
                         InsertCommand="INSERT INTO [Country] ([Name], [ContinentID], [Active]) VALUES (@Name, @ContinentID, @Active)"
                         SelectCommand="SELECT CountryID, [Country].[Name] Name,  [Country].[ContinentID] ContinentID, [Continent].Name ContinentName, [Country].[Active] Active  FROM [Country] INNER JOIN [Continent] ON ([Continent].ContinentID = [Country].[ContinentID])"
@@ -177,7 +177,7 @@
                             <asp:CheckBoxField DataField="Active" HeaderText="Active" SortExpression="Active" />
                         </Columns>
                     </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSourceAirport" runat="server" ConnectionString="<%$ ConnectionStrings:OakwoodConnectionString %>" DeleteCommand="DELETE FROM [Airport] WHERE [AirportID] = @AirportID" InsertCommand="INSERT INTO [Airport] ([Name], [CountryID], [Active]) VALUES (@Name, @CountryID, @Active)" SelectCommand="SELECT * FROM [Airport]" UpdateCommand="UPDATE [Airport] SET [Name] = @Name, [CountryID] = @CountryID, [Active] = @Active WHERE [AirportID] = @AirportID">
+                    <asp:SqlDataSource ID="SqlDataSourceAirport" runat="server" ConnectionString="<%$ ConnectionStrings:AirlineConnectionString %>" DeleteCommand="DELETE FROM [Airport] WHERE [AirportID] = @AirportID" InsertCommand="INSERT INTO [Airport] ([Name], [CountryID], [Active]) VALUES (@Name, @CountryID, @Active)" SelectCommand="SELECT * FROM [Airport]" UpdateCommand="UPDATE [Airport] SET [Name] = @Name, [CountryID] = @CountryID, [Active] = @Active WHERE [AirportID] = @AirportID">
                         <DeleteParameters>
                             <asp:Parameter Name="AirportID" Type="Int32" />
                         </DeleteParameters>
