@@ -6,6 +6,7 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using System.Diagnostics;
 
 public class Product
 {
@@ -18,18 +19,39 @@ public class Product
 
     public static DataTable FetchProducts()
     {
-        string Name_p;
-        Name_p = "Krispy Cream";
-        string StrCon = ConfigurationManager.ConnectionStrings["cs"].ConnectionString;
-        SqlConnection Conn = new SqlConnection(StrCon);
-        //string SqlSelect = "select ProductId ,Name ,ProductNumber ,Color ,Category , Cost   from products";
-        string SqlSelect = "usp_SelectProduct @Name";
-        SqlCommand cmd = new SqlCommand(SqlSelect, Conn);
-        cmd.Parameters.Add(new SqlParameter("@Name", Name_p));
-        SqlDataAdapter da = new SqlDataAdapter(cmd);
-        DataSet ds = new DataSet();
-        da.Fill(ds, "table1");
-        return ds.Tables[0];
+        try
+        {
+            string UserName_p;
+            UserName_p = "Dr Know";
+
+            using (EventLog eventLog = new EventLog("Application"))
+            {
+                eventLog.Source = "WebApplicationVOne";
+                eventLog.WriteEntry(UserName_p + " Products.FetchProducts() Entry.", EventLogEntryType.Information);
+
+                string StrCon = ConfigurationManager.ConnectionStrings["cs"].ConnectionString;
+                using (SqlConnection Conn = new SqlConnection(StrCon))
+                {
+                    //string SqlSelect = "select ProductId ,Name ,ProductNumber ,Color ,Category , Cost   from products";
+                    string SqlSelect = "usp_SelectProduct @Name";
+                    SqlCommand cmd = new SqlCommand(SqlSelect, Conn);
+                    cmd.Parameters.Add(new SqlParameter("@Name", UserName_p));
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds, "table1");
+
+                    eventLog.WriteEntry(UserName_p + " Products.FetchProducts() Exit.", EventLogEntryType.Information);
+                    return ds.Tables[0];
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            EventLog eventLog = new EventLog("Application");
+            eventLog.WriteEntry("Products.FetchProducts() exception thrown. " + ex.Message, EventLogEntryType.Error);
+            return null;
+        }
+
     }
 
 

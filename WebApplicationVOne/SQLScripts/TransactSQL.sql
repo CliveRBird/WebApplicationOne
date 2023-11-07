@@ -257,12 +257,17 @@ ADD CONSTRAINT FK_CategoryFK FOREIGN KEY([CategoryFK])
         REFERENCES Category (Cat_Id);
 
 
+-- public class Product
 drop procedure if exists usp_SelectProduct;
 go
 
-create procedure usp_SelectProduct(@Name varchar(500))
+create procedure usp_SelectProduct(@UserName varchar(500))
 as
 begin
     select ProductId ,[Name] ,ProductNumber ,Color ,Category , Cost  from products;
 end;
 go
+
+drop procedure if exists usp_SelectCategory;
+go
+

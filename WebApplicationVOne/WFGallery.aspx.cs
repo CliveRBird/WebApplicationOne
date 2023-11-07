@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Diagnostics;
 
 namespace WebApplicationVOne
 {
@@ -18,12 +17,6 @@ namespace WebApplicationVOne
 
             txtComment.Text = error_message;
 
-            string message = "This is a test message.";
-            using (EventLog eventLog = new EventLog("Application"))
-            {
-                eventLog.Source = "WebApplicationVOne";
-                eventLog.WriteEntry(message, EventLogEntryType.Information);
-            }
         }
     }
 }
