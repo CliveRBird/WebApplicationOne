@@ -13,6 +13,7 @@ namespace WebApplicationVOne
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            // Example of Cross Site Scripting to prove Code scanner is functioning
             string error_message = hiddenFieldProductID.Value + txtComment.Text;
 
             txtComment.Text = error_message;
