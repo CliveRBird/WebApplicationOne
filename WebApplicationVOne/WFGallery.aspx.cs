@@ -20,7 +20,7 @@ namespace WebApplicationVOne
             string message = "This is a test message.";
             using (EventLog eventLog = new EventLog("Application"))
             {
-                eventLog.Source = "Application";
+                eventLog.Source = "WebApplicationVOne";
                 eventLog.WriteEntry(message, EventLogEntryType.Information);
             }
         }
