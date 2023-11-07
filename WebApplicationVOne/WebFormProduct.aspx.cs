@@ -119,7 +119,7 @@ namespace WebApplicationVOne
             if (e.CommandName == "Select")
             {
 
-                TextBox1.Text = "Clive";
+                TextBox1.Text = "Clive B";
                 /*
                 int i = Convert.ToInt32(e.CommandArgument);
                 GridViewRow gvRow = (GridViewRow)grid1.Rows[i];
