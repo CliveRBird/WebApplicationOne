@@ -264,10 +264,17 @@ go
 create procedure usp_SelectProduct(@UserName varchar(500))
 as
 begin
-    select ProductId ,[Name] ,ProductNumber ,Color ,Category , Cost  from products;
+    select ProductId ,[Name] ,ProductNumber ,Color ,Category , Cost  from products order by [Name];
 end;
 go
 
 drop procedure if exists usp_SelectCategory;
+go
+
+create procedure usp_SelectCategory(@UserName varchar(500))
+as
+begin
+    select Cat_Id, Cat_Desc  from Category order by Cat_Desc;
+end;
 go
 

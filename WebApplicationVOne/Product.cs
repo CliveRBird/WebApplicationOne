@@ -57,14 +57,39 @@ public class Product
 
     public static DataTable FetchCategory()
     {
-        string StrCon = ConfigurationManager.ConnectionStrings["cs"].ConnectionString;
-        SqlConnection Conn = new SqlConnection(StrCon);
-        string SqlSelect = "select Cat_Id, Cat_Desc  from Category ";
-        SqlCommand Cmd = new SqlCommand(SqlSelect, Conn);
-        SqlDataAdapter da = new SqlDataAdapter(Cmd);
-        DataSet ds = new DataSet();
-        da.Fill(ds, "table1");
-        return ds.Tables[0];
+
+        try
+        {
+            string UserName_p;
+            UserName_p = "Dr Know";
+
+            using (EventLog eventLog = new EventLog("Application"))
+            {
+                eventLog.Source = "WebApplicationVOne";
+                eventLog.WriteEntry(UserName_p + " Products.FetchCategory() Entry.", EventLogEntryType.Information);
+
+                string StrCon = ConfigurationManager.ConnectionStrings["cs"].ConnectionString;
+                using (SqlConnection Conn = new SqlConnection(StrCon))
+                {
+                    //string SqlSelect = "select Cat_Id, Cat_Desc  from Category";
+                    string SqlSelect = "usp_SelectCategory  @Name";
+                    SqlCommand cmd = new SqlCommand(SqlSelect, Conn);
+                    cmd.Parameters.Add(new SqlParameter("@Name", UserName_p));
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds, "table1");
+
+                    eventLog.WriteEntry(UserName_p + " Products.FetchCategory() Exit.", EventLogEntryType.Information);
+                    return ds.Tables[0];
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            EventLog eventLog = new EventLog("Application");
+            eventLog.WriteEntry("Products.FetchCategory() exception thrown. " + ex.Message, EventLogEntryType.Error);
+            return null;
+        }
     }
 
     public static int update(string ProductId_p, string Name_p, string ProductNumber_p,

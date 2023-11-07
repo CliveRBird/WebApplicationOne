@@ -15,7 +15,7 @@
         AllowSorting="true"
         OnSorting="grid1_OnSorting"
         AllowPaging="true"
-        PageSize="5"
+        PageSize="8"
         OnPageIndexChanging="grid1_OnPageIndexChanging"
         EmptyDataText="No records Selected." >
         <Columns>
